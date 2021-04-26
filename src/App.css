@@ -3,7 +3,7 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-gap: 20px;
-  background: lightblue;
+  background: rgb(85, 183, 216);
 }
 
 .App main {
