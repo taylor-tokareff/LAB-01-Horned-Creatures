@@ -5,7 +5,15 @@ export default class CreatureSearch extends Component {
   render() {
     return (
 
-      <form> <button> </button> </form>
+      <form>
+
+        <input></input>
+        <select input></select>
+
+
+        <button>Search</button>
+
+      </form>
 
     );
   }
