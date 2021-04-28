@@ -4,12 +4,12 @@ import React, { Component } from 'react';
 export default class CreatureSearch extends Component {
 
   state = {
-    titleSearch: '',
+    userSearch: '',
     sortField: ''
   }
 
   handleNameChange = ({ target }) => {
-    this.setState({ titleSearch: target.value });
+    this.setState({ userSearch: target.value });
   }
 
   handleSearchChange = ({ target }) => {
@@ -18,19 +18,27 @@ export default class CreatureSearch extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log('i am here');
     this.props.onSearch(this.state);
+  }
+
+  componentDidUpdate(prevProp, prevState) {
+    if (prevState !== this.state) {
+      this.props.onSearch(this.state);
+    }
+
   }
 
   render() {
 
-    const { titleSearch, sortField } = this.state;
-
+    const { userSearch, sortField } = this.state;
+    console.log(userSearch, sortField);
     return (
 
-      <form>
+      <form onSubmit={this.handleSubmit}>
 
-        <input name="titleSearch"
-          value={titleSearch}
+        <input name="userSearch"
+          value={userSearch}
           onChange={this.handleNameChange} />
 
         <select name="sortField"
@@ -38,8 +46,9 @@ export default class CreatureSearch extends Component {
           onChange={this.handleSearchChange}>
 
           <option value="">sort...</option>
-          <option value="title">by title</option>
           <option value="horns">by number of horns</option>
+          <option value="title">by title</option>
+
 
         </select>
 
